@@ -1,0 +1,21 @@
+import { Controller, Get } from '@nestjs/common';
+import { AppService } from './app.service';
+
+@Controller()
+export class AppController {
+  constructor(private readonly appService: AppService) { }
+
+  @Get()
+  getHello(): string {
+    return this.appService.getHello();
+  }
+
+  @Get('/status')
+  getStatus() {
+    return {
+      message: 'everyhting is fine at the server. Thanks for asking',
+      at: new Date().toISOString(),
+    };
+
+  }
+}
